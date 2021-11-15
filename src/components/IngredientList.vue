@@ -4,19 +4,19 @@
             <thead>
                 <tr>
                 <th scope="col"> Name</th>
-                <th scope="col">Time</th>
+                <!-- <th scope="col">Time</th>
                 <th scope="col">Calorie</th>
                 <th scope="col">Protein</th> -->
                 <!-- <th scope="col">fat</th> -->
                 </tr>
             </thead>
-            <tbody v-for="(recipe, index) in recipes" :key="index">
+            <tbody v-for="(ingredient, index) in ingredients" :key="index">
                 <tr>
-                    <td>{{recipe.name}}</td>
-                    <td>{{recipe.time}}</td>
-                    <td>{{recipe.calorie}}</td>
-                    <td>{{recipe.protein}}</td>
-                    <td><a :href="'/recipes/' + recipe.id" class="btn btn-primary">Edit</a></td>
+                    <td>{{ingredient.name}}</td>
+                    <!-- <td>{{ingredient.time}}</td>
+                    <td>{{ingredient.calorie}}</td>
+                    <td>{{ingredient.protein}}</td> -->
+                    <td><a :href="'/ingredients/' + ingredient.id" class="btn btn-primary">Edit</a></td>
                 </tr>
             </tbody>
         </table>
@@ -24,20 +24,20 @@
 </template>
 
 <script>
-import RecipeDataService from '../services/RecipeDataService'
+import DataService from '../services/DataService'
 
 export default {
-    name: 'recipes',
+    name: 'ingredients',
     data() {
         return {
-            recipes: []
+            ingredients: []
         }
     },
     methods: {
-        retrieveRecipes() {
-           RecipeDataService.getAll()
+        retrieveIngredients() {
+           DataService.getAll()
                 .then(response => {
-                    this.recipes = response.data
+                    this.ingredients = response.data
                 })
                 .catch(e => {
                     alert(e)
@@ -45,7 +45,7 @@ export default {
         }
     },
     mounted() {
-        this.retrieveRecipes()
+        this.retrieveIngredients()
     }
 }
 </script>

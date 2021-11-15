@@ -1,16 +1,16 @@
 import http from '../http-common'
 
-class DataService {
+class RecipeDataService {
     getAll() {
-        return http.get('/ingredients')
+        return http.get('/recipes')
     }
 
     get(id) {
-        return http.get(`/ingredients/${id}`)
+        return http.get(`/recipes/${id}`)
     }
 
     // create(data) {
-    //     return http.post('/ingredients', data)
+    //     return http.post('/recipes', data)
     // }
 
     // update(id, data) {
@@ -22,4 +22,4 @@ class DataService {
     // }
 }
 
-export default new DataService()
+export default new RecipeDataService()

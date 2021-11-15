@@ -7,19 +7,25 @@ export default new Router({
     mode: 'history',
     routes: [
         {
-            path: '/search',
-            // alias: '/customers',
-            name: 'search',
-            component: () => import('./components/RecipeList')
+            path: '/ingredients',
+            //alias: '/ingredients',
+            name: 'ingredients',
+            component: () => import('./components/IngredientList')
         },
+        {
+            path: '/recipes',
+            //alias: '/ingredients',
+            name: 'recipes',
+            component: () => import('./components/RecipeList')
+        }
         // {
-        //     path: '/search/:id',
-        //     name: 'edit-customer',
+        //     path: '/recipe/:id',
+        //     name: 'edit-recipe',
         //     component: () => import('./components/EditCustomer')
         // },
         // {
         //     path: '/add',
-        //     name: 'add-customer',
+        //     name: 'add-recipe',
         //     component: () => import('./components/AddCustomer')
         // }
     ]
