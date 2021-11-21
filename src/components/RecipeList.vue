@@ -1,5 +1,7 @@
 <template>
     <div>
+        <search :listOfSearch="recipes"> 
+        <template #item="{item: filteredRecipes}"> 
         <table class="table">
             <thead>
                 <tr>
@@ -10,27 +12,32 @@
                 <!-- <th scope="col">fat</th> -->
                 </tr>
             </thead>
-            <tbody v-for="(recipe, index) in recipes" :key="index">
+            <tbody v-for="(recipe, index) in filteredRecipes" :key="index">
                 <tr>
                     <td>{{recipe.name}}</td>
                     <td>{{recipe.time}}</td>
                     <td>{{recipe.calorie}}</td>
                     <td>{{recipe.protein}}</td>
-                    <td><a :href="'/recipes/' + recipe.id" class="btn btn-primary">Edit</a></td>
+                    <td><a :href="'/recipes/' + recipe.id_recipe" class="btn btn-primary">Edit</a></td>
                 </tr>
             </tbody>
         </table>
+        </template>
+        </search>
     </div>
 </template>
 
 <script>
 import RecipeDataService from '../services/RecipeDataService'
+import search from './search.vue'
+import ingredients from '../mocks/Ingredient';
 
 export default {
+  components: { search },
     name: 'recipes',
     data() {
         return {
-            recipes: []
+            recipes: ingredients
         }
     },
     methods: {
@@ -45,7 +52,7 @@ export default {
         }
     },
     mounted() {
-        this.retrieveRecipes()
+        // this.retrieveRecipes()
     }
 }
 </script>

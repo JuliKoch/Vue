@@ -17,16 +17,16 @@ export default new Router({
             //alias: '/ingredients',
             name: 'recipes',
             component: () => import('./components/RecipeList')
-        }
+        },
         // {
         //     path: '/recipe/:id',
         //     name: 'edit-recipe',
         //     component: () => import('./components/EditCustomer')
         // },
-        // {
-        //     path: '/add',
-        //     name: 'add-recipe',
-        //     component: () => import('./components/AddCustomer')
-        // }
+        {
+            path: '/add',
+            name: 'add-recipe',
+            component: () => import('./components/AddCustomer')
+        }
     ]
 })

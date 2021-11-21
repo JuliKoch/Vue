@@ -1,0 +1,21 @@
+.form_add {
+    max-width: 40%;
+}
+
+.description_area {
+    max-height: 200px;
+}
+
+.form_field {
+    display: flex;
+    justify-content: space-between;
+    margin: 0px 0px 15px 0px;
+}
+
+.input_value {
+    min-width: 256px;
+}
+
+.fieldset {
+    margin: 0px 0px 15px 0px;
+}
