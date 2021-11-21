@@ -29,7 +29,6 @@
 
 <script>
 import DataService from '../services/DataService'
-import ingredients from '../mocks/Ingredient';
 import search from './search.vue';
 
 export default {
@@ -41,24 +40,13 @@ export default {
             searchValue: ''
         }
     },
-    // computed: {
-    //     filteredIngredients() {
-    //         return this.ingredients.filter( ({name}) => name.includes(this.searchValue) )
-    //     }
-    // },
     methods: {
-        retrieveIngredients() {
-           DataService.getAll()
-                .then(response => {
-                    this.ingredients = response.data
-                })
-                .catch(e => {
-                    alert(e)
-                })
+        async retrieveIngredients() {
+           this.ingredients = await DataService.getAll()
         },
     },
     mounted() {
-        // this.retrieveIngredients()
+        this.retrieveIngredients()
     }
 }
 </script>

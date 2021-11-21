@@ -1,17 +1,32 @@
 import http from '../http-common'
 
 class RecipeDataService {
-    getAll() {
-        return http.get('/recipes')
+    async getAll() {
+        try {
+            const ingredients = await http.get('/recipes');
+            return ingredients;
+        } catch(err) {
+            console.log(err);
+        }
     }
 
-    get(id) {
-        return http.get(`/recipes/${id}`)
+    async get(id) {
+        try {
+            const ingredient = await http.get(`/recipes/${id}`);
+            return  ingredient
+        } catch(err) {
+            console.log(err)
+        }
     }
 
-    // create(data) {
-    //     return http.post('/recipes', data)
-    // }
+    async create(data) {
+        try {
+            const createdRecipe = await http.post('/recipes', data);
+            return createdRecipe
+        } catch(err) {
+            console.log(err)
+        } 
+    }
 
     // update(id, data) {
     //     return http.put(`/customers/${id}`, data)

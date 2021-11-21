@@ -30,7 +30,6 @@
 <script>
 import RecipeDataService from '../services/RecipeDataService'
 import search from './search.vue'
-import ingredients from '../mocks/Ingredient';
 
 export default {
   components: { search },
@@ -41,18 +40,12 @@ export default {
         }
     },
     methods: {
-        retrieveRecipes() {
-           RecipeDataService.getAll()
-                .then(response => {
-                    this.recipes = response.data
-                })
-                .catch(e => {
-                    alert(e)
-                })
+        async retrieveRecipes() {
+           this.recipes = await RecipeDataService.getAll()
         }
     },
     mounted() {
-        // this.retrieveRecipes()
+        this.retrieveRecipes()
     }
 }
 </script>

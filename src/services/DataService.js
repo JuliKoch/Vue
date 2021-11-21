@@ -1,12 +1,22 @@
 import http from '../http-common'
 
 class DataService {
-    getAll() {
-        return http.get('/ingredients')
+    async getAll() {
+        try {
+            const ingredients = await http.get('/ingredients');
+            return ingredients;
+        } catch(err) {
+            console.log(err);
+        }
     }
 
-    get(id) {
-        return http.get(`/ingredients/${id}`)
+    async get(id) {
+        try {
+            const ingredient = await http.get(`/ingredients/${id}`);
+            return  ingredient
+        } catch(err) {
+            console.log(err)
+        }
     }
 
     // create(data) {
