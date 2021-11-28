@@ -1,5 +1,12 @@
 <template>
     <div>
+        <label for="search">Поиск: </label>
+        <input id="search" type="text" v-model="name"/><br/>
+        <label for="name">По названию</label>
+        <input type="radio" id="name" name="searchType" value="name" v-model="typeSearch"/><br/>
+        <label for="product">По ингредиентам</label>
+        <input type="radio" id="product" name="searchType" value="product" v-model="typeSearch"/><br/>
+        <button @click="getRecipesBySearch" type="button">Поиск</button>
         <table class="table">
             <thead>
                 <tr>
@@ -27,7 +34,9 @@ export default {
     name: 'recipes',
     data() {
         return {
-            recipes: []
+            recipes: [],
+            name: '',
+            typeSearch: ''
         }
     },
     methods: {
@@ -40,10 +49,20 @@ export default {
                 .catch(e => {
                     alert(e)
                 })
+        },
+        getRecipesBySearch() {
+            RecipeDataService.getName({name: this.name, typeSearch: this.typeSearch})
+                .then(res => {
+                    console.log(res);
+                    this.recipes = res.data;
+                })
+                .catch(e => {
+                    alert(e)
+                })
         }
     },
     mounted() {
-        this.retrieveRecipes()
+        // this.retrieveRecipes()
     }
 }
 </script>

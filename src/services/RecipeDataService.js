@@ -9,8 +9,8 @@ class RecipeDataService {
         return http.get(`/recipes/search/${id}`)
     }
 
-     getName(name) {
-        return http.get(`/recipes/searchName?name=${name}`)
+    getName({name, typeSearch}) {
+        return http.get(`/recipes/searchProduct?${typeSearch === 'product'? 'product': 'name'}=${name}`)
     }
     create(data) {
         return http.post('/recipes', data)
